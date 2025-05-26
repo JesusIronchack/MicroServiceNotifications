@@ -18,4 +18,19 @@ public class NotificationService {
     public Notification saveNotification(Notification notification) {
         return notificationRepository.save(notification);
     }
+
+    public Notification updateNotification(Long id, Notification updatedNotification) {
+        Notification notification = notificationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Notification not found"));
+
+        notification.setMessage(updatedNotification.getMessage()); // Actualiza solo el mensaje
+        return notificationRepository.save(notification);
+    }
+
+    public void deleteNotification(Long id) {
+        Notification notification = notificationRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Notification not found"));
+
+        notificationRepository.delete(notification);
+    }
 }
