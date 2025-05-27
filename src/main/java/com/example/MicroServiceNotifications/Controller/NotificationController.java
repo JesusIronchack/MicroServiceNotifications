@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/notifications")
 public class NotificationController {
@@ -14,11 +16,15 @@ public class NotificationController {
     @Autowired
     private NotificationService notificationService;
 
+    @GetMapping
+    public ResponseEntity <List<Notification>> getAllNotifications() {
+        return ResponseEntity.ok(notificationService.getAllNotifications());
+    }
+
     @GetMapping("/{id}")
-    public ResponseEntity<NotificationsDTO> getNotificationById(@PathVariable Long id) {
+    public ResponseEntity<Notification> getNotificationById(@PathVariable Long id) {
         Notification notification = notificationService.getNotificationById(id);
-        NotificationsDTO dto = new NotificationsDTO(notification.getId(), notification.getMessage());
-        return ResponseEntity.ok(dto);
+        return ResponseEntity.ok(notification);
     }
 
     @PostMapping
