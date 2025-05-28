@@ -1,4 +1,4 @@
-package com.example.MicroServiceNotifications.Services;
+package com.example.MicroServiceNotifications.Service;
 
 import com.example.MicroServiceNotifications.Models.Notification;
 import com.example.MicroServiceNotifications.Repositories.NotificationRepository;
