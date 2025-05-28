@@ -4,6 +4,7 @@ import com.example.MicroServiceNotifications.DTO.NotificationsDTO;
 import com.example.MicroServiceNotifications.Models.Notification;
 import com.example.MicroServiceNotifications.Service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +30,7 @@ public class NotificationController {
 
     @PostMapping
     public ResponseEntity<Notification> saveNotification(@RequestBody Notification notification) {
-        return ResponseEntity.ok(notificationService.saveNotification(notification));
+        return ResponseEntity.status(HttpStatus.CREATED).body(notificationService.saveNotification(notification));
     }
 
     @PutMapping("/{id}")
