@@ -18,4 +18,8 @@ public class Notification {
     private Long id;
     private String message;
 
+    public Notification(String message) {
+        this.message = message;
+    }
+
 }
